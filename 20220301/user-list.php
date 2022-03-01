@@ -1,7 +1,7 @@
 <?php
 
 require_once("./db-connect.php");
-$sql="SELECT * FROM user";
+$sql="SELECT * FROM user order by id DESC";
 $result= $conn -> query($sql);
 ?>
 

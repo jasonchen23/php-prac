@@ -52,5 +52,5 @@ if ($conn->query($sql) === TRUE) {
 
 // echo $sql;
 $conn->close(); //mysqli_close($conn);
-header("location: create-user.php"); 
+header("location: user-list.php"); 
 ?>

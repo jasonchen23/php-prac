@@ -29,23 +29,41 @@ $row=$result->fetch_assoc();
         <table class="table table-bordered">
             <tr>
                 <td>ID</td>
-                <td><?=$row["id"]?></td>
+                <td>
+                    <input type="text" name="id" class="form-control" Required value="<?php echo $row["id"]?>">
+                </td>
             </tr>
             <tr>
                 <td>ACCOUNT</td>
-                <td><?=$row["account"]?></td>
+                <td>
+                    <input type="text" name="account" class="form-control" Required value="<?=$row["account"]?>">
+                </td>
             </tr>
             <tr>
                 <td>GENDER</td>
-                <td><?=$row["gender"]?></td>
+                <td>                
+                    <select name="gender" id="" class="form-select">
+                        <option value="">Select Gender</option>
+                        <option value="1"
+                        <?php
+                        if($row["gender"]== 1) echo "selected";
+                        ?>>
+                        Male</option>
+                        <option value="2"
+                        <?php
+                        if($row["gender"]== 2) echo "selected";
+                        ?>>
+                        Female</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>PHONE</td>
-                <td><?=$row["phone"]?></td>
+                <td><input type="text" name="phone" class="form-control" Required value="<?=$row["phone"]?>"></td>
             </tr>
         </table>
         <div class="py-2">
-            <a href="./user-edit.php?id=<?=$row["id"]?>" class="btn btn-info"> 修改</a>
+            <a href="./userinfo.php?id=<?=$row["id"]?>" class="btn btn-info"> 取消</a>
         </div>
     </div>
     <!-- Bootstrap JavaScript Libraries -->

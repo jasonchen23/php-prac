@@ -45,6 +45,7 @@ $result= $conn -> query($sql);
                     <th>password</th>
                     <th>gender</th>
                     <th>phone</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -53,7 +54,7 @@ $result= $conn -> query($sql);
                 // if($result -> num_rows> 0):
                 //     while($row = $result-> fetch_assoc()):
                 // method 2
-                if ($result -> num_rows>0):
+                if ($result->num_rows > 0):
                     foreach($data as $row):
                 ?>
                 <tr>
@@ -62,6 +63,7 @@ $result= $conn -> query($sql);
                     <td><?=$row["password"]?></td>
                     <td><?=$row["gender"]?></td>
                     <td><?=$row["phone"]?></td>
+                    <td> <a href="./userinfo.php?id=<?=$row["id"]?>" class="btn btn-info"> Details</a></td>
                 </tr>
                 <?php
                     // method 1

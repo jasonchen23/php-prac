@@ -20,7 +20,7 @@ if($conn -> query($sql) == TRUE) {
         $_SESSION["user"]=$data;
         unset($_SESSION["error"]);
         var_dump($_SESSION["user"]);
-        header("location: ./dashboard.php");
+        // header("location: ./dashboard.php");
     } else {
         echo "failed";
         if(isset($_SESSION["error"]["times"])){
@@ -29,8 +29,8 @@ if($conn -> query($sql) == TRUE) {
             $_SESSION["error"]["times"]=1;
         }
         $_SESSION["error"]["message"]="帳號或密碼錯誤";
-        header("location: ./login.php");
     };
+    header("location: ./login.php");
 } else{
     echo "Error: ". $conn->error;
 }

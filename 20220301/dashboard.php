@@ -15,7 +15,12 @@ session_start();
   </head>
   <body>
     <div class="container">
-        <h1>Hi,<?= $_SESSION["user"]["account"]?></h1>
+        <div class="d-flex justify-content-end align-items-center">
+            <div class="me-3">
+                Hi,<?= $_SESSION["user"]["account"]?>
+            </div>
+            <a href="./doLogout.php" class="btn btn-info">登出</a>
+        </div>
     </div>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

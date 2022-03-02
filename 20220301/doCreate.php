@@ -40,8 +40,8 @@ $phones_string=implode(', ',$phones); //090000000, 094548153,
 // date_default_timezone_set("Asia/Taipei");
 $now=date('Y-m-d H:i:s');
 
-$sql="INSERT INTO user(account,password,gender,phone,create_time)
-VALUES ('$account','$password','$gender','$phones_string','$now')";
+$sql="INSERT INTO user(account,password,gender,phone,create_time,valid)
+VALUES ('$account','$password','$gender','$phones_string','$now',1)";
 if ($conn->query($sql) === TRUE) {
     echo "新資料輸入成功";
     $last_id = $conn -> insert_id;

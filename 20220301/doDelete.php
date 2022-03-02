@@ -1,0 +1,15 @@
+<?php
+require_once("./db-connect.php");
+
+$id = $_GET["id"];
+
+$sql="UPDATE user SET valid=0 where id=$id";
+
+if($conn->query($sql) === TRUE) {
+    echo "刪除成功";
+} else {
+    echo "刪除失敗". $conn->error;
+}
+header("location: ./user-list.php");
+
+?>

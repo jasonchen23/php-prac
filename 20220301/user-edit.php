@@ -5,6 +5,7 @@ $id=$_GET["id"];
 $sql="SELECT * FROM user WHERE id=$id";
 $result= $conn -> query($sql);
 $row=$result->fetch_assoc();
+$phonesArr=explode(', ',$row["phone"]);
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,12 +27,12 @@ $row=$result->fetch_assoc();
         <div class="py-2">
             <a href="./user-list.php" class="btn btn-info"> 使用者列表</a>
         </div>
+        <form action="./doUpdate.php" method="post">
+        <input type="hidden" name="id" value="<?php echo $row["id"]?>">    
         <table class="table table-bordered">
             <tr>
                 <td>ID</td>
-                <td>
-                    <input type="text" name="id" class="form-control" Required value="<?php echo $row["id"]?>">
-                </td>
+                <td><?=$row["id"]?></td>
             </tr>
             <tr>
                 <td>ACCOUNT</td>
@@ -59,12 +60,33 @@ $row=$result->fetch_assoc();
             </tr>
             <tr>
                 <td>PHONE</td>
-                <td><input type="text" name="phone" class="form-control" Required value="<?=$row["phone"]?>"></td>
+                <td>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="phone[]" class="form-control" Required value="<?php if(isset($phonesArr[0])) echo $phonesArr[0]?>">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="phone[]" class="form-control" Required value="<?php if(isset($phonesArr[1])) echo $phonesArr[1]?>">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="phone[]" class="form-control" Required value="<?php if(isset($phonesArr[2])) echo $phonesArr[1]?>">
+                    </div>
+                </div>
+                </td>
             </tr>
         </table>
         <div class="py-2">
-            <a href="./userinfo.php?id=<?=$row["id"]?>" class="btn btn-info"> 取消</a>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <button type="submit" class="btn btn-info">送出</button>
+                </div>
+                <div>
+                    <a href="./doDelete.php?id=<?=$row["id"]?>" class="btn btn-danger">刪除</a>
+                    <a href="./user-info.php?id=<?=$row["id"]?>" class="btn btn-info"> 取消</a>
+                </div>
+            </div>
         </div>
+        </form>
     </div>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

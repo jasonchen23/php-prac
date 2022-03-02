@@ -1,7 +1,7 @@
 <?php
 
 require_once("./db-connect.php");
-$sql="SELECT * FROM user order by id DESC";
+$sql="SELECT * FROM user WHERE valid=1 order by id DESC";
 $result= $conn -> query($sql);
 ?>
 
@@ -63,7 +63,7 @@ $result= $conn -> query($sql);
                     <td><?=$row["password"]?></td>
                     <td><?=$row["gender"]?></td>
                     <td><?=$row["phone"]?></td>
-                    <td> <a href="./userinfo.php?id=<?=$row["id"]?>" class="btn btn-info"> Details</a></td>
+                    <td> <a href="./user-info.php?id=<?=$row["id"]?>" class="btn btn-info"> Details</a></td>
                 </tr>
                 <?php
                     // method 1

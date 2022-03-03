@@ -15,6 +15,7 @@ if($conn -> query($sql) == TRUE) {
         // echo "success";
         $user=$result->fetch_assoc();
         $data=[
+            "status"=>1,
             "account"=>$user["account"]
         ];
         $_SESSION["user"]=$data;
@@ -31,9 +32,10 @@ if($conn -> query($sql) == TRUE) {
         }
         $_SESSION["error"]["message"]="帳號或密碼錯誤";
         $data=[
+            "status"=>0,
             "error"=>[
                 "message"=>$_SESSION['error']['message'],
-                "time"=>$_SESSION['error']['message']
+                "time"=>$_SESSION['error']['times']
             ]
             ];
         echo json_encode($data);
